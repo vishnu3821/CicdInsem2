@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-container
+    environment:
+      MYSQL_DATABASE: quiz
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: quizuser
+      MYSQL_PASSWORD: quizpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    container_name: quiz-backend
+    ports:
+      - "9096:9096"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/quiz?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: quizuser
+      SPRING_DATASOURCE_PASSWORD: quizpass
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: quiz-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:
