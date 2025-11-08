@@ -1,0 +1,62 @@
+# Git
+.git
+.gitignore
+
+# Node
+node_modules/
+npm-debug.log
+
+# Java
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Maven
+target/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+*.pem
+*.p12
+*.key
+*.crt
+
+# Logs
+logs/
+*.log
+
+# Build output
+build/
+dist/
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Local development
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Temp files
+tmp/
+temp/
