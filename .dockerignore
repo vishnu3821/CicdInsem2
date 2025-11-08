@@ -28,6 +28,10 @@ target/
 *.ipr
 *.iws
 
+# OS
+.DS_Store
+Thumbs.db
+
 # Environment files
 .env
 *.pem
@@ -51,3 +55,20 @@ dist/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Local development
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Temp files
+tmp/
+temp/
+>>>>>>> 3e8f6d23c01b6c6a6494bb9dcd128b1220cf2192
